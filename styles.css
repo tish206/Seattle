@@ -1,9 +1,5 @@
 /* ==========================================================================
-* Polish You Pretty Nail Salon - Stylesheet
-* Author: Gemini
-* Date: 2024-07-24
-* Description:  CSS for the Polish You Pretty Nail Salon website,
-* optimized for beauty, usability, and performance.
+* Polish You Pretty Nail Salon - Enhanced Stylesheet
 * =========================================================================
 */
 
@@ -55,7 +51,6 @@
     --spacing-xl: 4rem;    /* 64px */
 
     /* --- Borders --- */
-    --border-width: 1px;
     --border-radius: 8px;      /* Slightly rounded corners */
     --border-color: #ddd;      /* Light gray border */
 
@@ -328,6 +323,7 @@ header {
     height: 250px;
     object-fit: cover;
     transition: transform var(--transition-duration) ease;
+    will-change: transform;
 }
 .gallery-card img:hover{
   transform: scale(1.05);
@@ -588,7 +584,13 @@ body {
     background-color: var(--primary-color);
 }
 
-a:focus {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
+a:focus,
+button:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
