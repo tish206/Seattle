@@ -18,32 +18,97 @@
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   
-  <!-- Link to Bootstrap and External CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  
+  <!-- Link to Minified CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">>
+  <link rel="stylesheet" href="styles.min.css"> <!-- Use minified CSS -->
+  <link href="theme.css" rel="stylesheet"> <!-- Add your custom theme -->
+  <link rel="stylesheet" href="css/bridge-theme.css"> <!-- Add Bridge theme CSS -->
+  <link rel="stylesheet" href="css/style.css"> <!-- WordPress theme CSS -->
+  <link rel="stylesheet" href="css/theme.css"> <!-- Additional theme CSS -->
+  <script src="js/bridge-theme.js" defer></script> <!-- Add Bridge theme JS -->
+  <script src="js/scripts.js" defer></script> <!-- WordPress theme JS -->
+  <script src="js/theme.js" defer></script> <!-- Additional theme JS -->
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
+  <!-- Azure Bot Service Integration -->
+  <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
   <style>
     body {
+      font-family: Arial, sans-serif;
+      margin: 0 auto;
+      max-width: 1200px;
+      line-height: 1.6;
       padding-top: 70px;
+      background-color: #f9f9f9; /* Subtle background color for minimalism */
     }
     .footer {
-      background-color: #f8f9fa;
+      background-color: #ffffff; /* Clean white footer */
       padding: 20px;
       text-align: center;
       margin-top: 40px;
+      border-top: 1px solid #ddd; /* Subtle border for separation */
     }
-    /* Smooth Scrolling */
-    html {
-      scroll-behavior: smooth;
+    h1, h2, h3 {
+      font-weight: 600;
+      color: #333; /* Darker text for better readability */
+    }
+    p {
+      color: #555; /* Softer text color for body content */
+    }
+    ul {
+      padding-left: 20px;
+    }
+    a {
+      color: #007bff; /* Consistent link color */
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto; /* Ensure images are responsive */
+    }
+    button, .btn {
+      font-size: 1rem;
+      padding: 10px 20px;
+      border-radius: 5px;
     }
   </style>
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Polish You Pretty Nail Salon",
+    "description": "Polish You Pretty Nail Salon provides nail, hair, and beauty services in Seattle. Discover local senior community resources, including Hyde Shuttle transportation for Seattle seniors.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "6007 Martin Luther King Jr Way S",
+      "addressLocality": "Seattle",
+      "addressRegion": "WA",
+      "postalCode": "98118",
+      "addressCountry": "US"
+    },
+    "telephone": "+1-206-348-1574",
+    "url": "https://polishyoutprettynailsalon.com"
+  }
+  </script>
+
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://cdn.botframework.com; style-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self' https://YOUR_BOT_DIRECTLINE_ENDPOINT_HERE https://YOUR_AZURE_PERSONALIZATION_ENDPOINT_HERE;">
+
+  <!-- React.js Integration -->
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow" aria-label="Main Navigation">
     <div class="container">
       <a class="navbar-brand" href="#">Polish You Pretty Nail Salon</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
@@ -73,35 +138,41 @@
   <main class="container my-5">
     <!-- Header Section -->
     <header class="text-center mb-5">
-      <h1>Polish You Pretty Nail, Hair & Beauty Salon</h1>
+      <h1 class="display-4">Polish You Pretty Nail, Hair & Beauty Salon</h1>
       <p class="lead">Seattle's Premier Destination for Nail, Hair & Beauty Services</p>
+      <img src="illustrations/nail-salon.svg" alt="Illustration of a nail salon" class="img-fluid my-4"> <!-- Updated image -->
     </header>
 
     <!-- About Section -->
-    <section id="about" class="mb-5">
-      <h2>About Us</h2>
+    <section id="about" class="mb-5" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="h3">About Us</h2>
       <p>Located in Seattle, Washington, Polish You Pretty Nail Salon is committed to providing high-quality beauty services in a friendly atmosphere. Whether you're looking for nail care, hairstyling, or a full beauty makeover, we’re here for you.</p>
+      <!-- Suggested Image -->
+      <img src="images/about-salon.jpg" alt="Exterior view of the salon" class="img-fluid my-4">
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="mb-5">
-      <h2>Our Services</h2>
+    <section id="services" class="mb-5" aria-labelledby="services-heading">
+      <h2 id="services-heading" class="h3">Our Services</h2>
       <ul>
         <li>Nail Services (Manicures, Pedicures)</li>
         <li>Hair Styling and Treatments</li>
         <li>Beauty and Spa Packages</li>
       </ul>
       <p><strong>Senior Days:</strong> Every Wednesday, we offer exclusive discounts for seniors. Pamper yourself with our special care!</p>
+      <!-- Suggested Images -->
+      <img src="images/manicure-service.jpg" alt="Manicure service in progress" class="img-fluid my-3">
+      <img src="images/hair-styling.jpg" alt="Hair styling service" class="img-fluid my-3">
     </section>
 
     <!-- Community Resources Section -->
-    <section id="resources" class="mb-5">
-      <h2>Community Resources</h2>
-      <h3>Hyde Shuttle</h3>
+    <section id="resources" class="mb-5" aria-labelledby="resources-heading">
+      <h2 id="resources-heading" class="h3">Community Resources</h2>
+      <h3 class="h4">Hyde Shuttle</h3>
       <p>
         The Hyde Shuttle, offered by Sound Generations, provides door-to-door transportation services for senior citizens and older adults with disabilities throughout King County, including Seattle.
-        This service operates during weekdays from 8:00 AM to 4:00 PM and is tailored for trips to grocery stores, community centers, meal programs, and appointments like nail salons or local errands.
       </p>
+      <img src="illustrations/transportation.svg" alt="Illustration of senior transportation service" class="img-fluid my-4"> <!-- Updated image -->
       <ul>
         <li><strong>Door-to-Door Service:</strong> Seniors can be picked up from their home and dropped off at their destination.</li>
         <li><strong>Community-Oriented:</strong> Helps seniors stay connected with community events and errands beyond medical appointments.</li>
@@ -112,17 +183,122 @@
       <p>Hyde Shuttle is a vital resource for keeping seniors active and engaged in their communities. If their hours or service area don’t meet your needs, explore local senior centers for supplemental programs that may offer additional flexibility.</p>
     </section>
 
+    <!-- AI-Powered Chatbot -->
+    <section id="chatbot" class="container my-5" aria-labelledby="chatbot-heading">
+      <h2 id="chatbot-heading" class="h3">Chat with Us</h2>
+      <p>Have questions? Chat with our AI-powered assistant for instant support!</p>
+      <div id="webchat"></div>
+      <script>
+        (async function () {
+          const res = await fetch('https://YOUR_BOT_DIRECTLINE_ENDPOINT_HERE', {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer YOUR_DIRECT_LINE_SECRET_HERE'
+            }
+          });
+          const { token } = await res.json();
+          window.WebChat.renderWebChat(
+            {
+              directLine: window.WebChat.createDirectLine({ token }),
+              userID: 'user-id',
+              username: 'Guest',
+              locale: 'en-US'
+            },
+            document.getElementById('webchat')
+          );
+        })().catch(err => console.error(err));
+      </script>
+    </section>
+
+    <!-- Placeholder for Personalized Recommendations -->
+    <section id="recommendations" class="container my-5" aria-labelledby="recommendations-heading">
+      <h2 id="recommendations-heading" class="h3">Recommended for You</h2>
+      <p>Discover services and offers tailored just for you!</p>
+      <div id="personalized-content">
+        <!-- Content dynamically populated by Azure Cognitive Services -->
+      </div>
+      <script>
+        // Example: Fetch personalized recommendations
+        async function fetchRecommendations() {
+          const response = await fetch('https://YOUR_AZURE_PERSONALIZATION_ENDPOINT_HERE', {
+            method: 'GET',
+            headers: {
+              'Ocp-Apim-Subscription-Key': 'YOUR_AZURE_SUBSCRIPTION_KEY_HERE'
+            }
+          });
+          const recommendations = await response.json();
+          const container = document.getElementById('personalized-content');
+          recommendations.forEach(item => {
+            const div = document.createElement('div');
+            div.textContent = item.name; // Adjust based on API response structure
+            container.appendChild(div);
+          });
+        }
+        fetchRecommendations().catch(err => console.error(err));
+      </script>
+    </section>
+
+    <!-- Dynamic Content Section -->
+    <section id="dynamic-content" class="container my-5" aria-labelledby="dynamic-content-heading">
+      <h2 id="dynamic-content-heading" class="h3">Dynamic Content</h2>
+      <div id="react-root"></div> <!-- React root element -->
+      <script type="text/babel">
+        const DynamicContent = () => {
+          const [content, setContent] = React.useState([]);
+
+          React.useEffect(() => {
+            // Simulate fetching dynamic content
+            setTimeout(() => {
+              setContent([
+                { id: 1, title: "Exclusive Nail Care Tips", description: "Learn how to maintain healthy nails at home." },
+                { id: 2, title: "Senior Discounts", description: "Discover our special offers for seniors every Wednesday." },
+                { id: 3, title: "Upcoming Events", description: "Join us for our beauty workshops this month." }
+              ]);
+            }, 1000);
+          }, []);
+
+          return (
+            <div>
+              {content.length === 0 ? (
+                <p>Loading dynamic content...</p>
+              ) : (
+                <ul>
+                  {content.map(item => (
+                    <li key={item.id}>
+                      <h4>{item.title}</h4>
+                      <p>{item.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          );
+        };
+
+        ReactDOM.render(<DynamicContent />, document.getElementById('react-root'));
+      </script>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="container my-5">
+      <h2 class="h3">Gallery</h2>
+      <img src="images/seattle-informatiion-beauty-1.jpg" alt="Beautiful nail art design" class="img-fluid my-3">
+      <img src="images/nails-beauty-brows-hair-seattle-info-1.jpg" alt="Interior of the nail salon" class="img-fluid my-3">
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="mb-5">
-      <h2>Contact Polish You Pretty Nail Salon</h2>
+    <section id="contact" class="mb-5" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="h3">Contact Polish You Pretty Nail Salon</h2>
       <p><strong>Address:</strong> 6007 Martin Luther King Jr Way S, Seattle, WA 98118</p>
       <p><strong>Phone:</strong> <a href="tel:2063481574">(206) 348-1574</a></p>
-      <a href="https://polishyoutprettynailsalon.com/book" class="btn btn-primary">Book an Appointment</a>
+      <a href="https://polishyoutprettynailsalon.com/book" class="btn btn-primary btn-lg">Book an Appointment</a>
+      <!-- Suggested Image -->
+      <img src=+ alt="Map showing the salon location" class="img-fluid my-4">
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="footer">
+  <footer class="footer" aria-label="Footer">
     <div class="container">
       <p>&copy; 2025 Polish You Pretty Nail, Hair & Beauty Salon. All Rights Reserved.</p>
     </div>
@@ -130,6 +306,7 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts.min.js"></script> <!-- Use minified JS -->
 </body>
 </html>
 
