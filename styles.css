@@ -1,109 +1,594 @@
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  padding-top: 70px;
-  background-color: #f9f9f9;
-  color: #333;
+/* ==========================================================================
+* Polish You Pretty Nail Salon - Stylesheet
+* Author: Gemini
+* Date: 2024-07-24
+* Description:  CSS for the Polish You Pretty Nail Salon website,
+* optimized for beauty, usability, and performance.
+* =========================================================================
+*/
+
+/* ==========================================================================
+* Table of Contents:
+* 1.  Global Styles
+* 2.  Typography
+* 3.  Layout & Structure
+* 4.  Navigation
+* 5.  Main Content
+* 6.  Footer
+* 7.  Forms
+* 8.  Buttons
+* 9.  Images & Media
+* 10. Animations & Transitions
+* 11. Responsive Design
+* 12. Print Styles  (Optional)
+* 13. Accessibility
+* =========================================================================
+*/
+
+/* ==========================================================================
+* 1. Global Styles
+* =========================================================================
+*/
+
+:root {
+    /* --- Color Palette (Customizable) --- */
+    --primary-color: #f0f0f0;      /* Light background (off-white) */
+    --secondary-color: #e0e0e0;    /* Slightly darker background for sections */
+    --accent-color: #f48fb1;       /* (Rose) */
+    --accent-color-hover: #f06292;  /* Darker rose on hover */
+    --text-color: #333;           /* Dark gray for main text */
+    --text-light: #666;           /* Medium gray for secondary text */
+    --white: #fff;
+    --black: #000;
+
+    /* --- Typography --- */
+    --base-font-family: 'Arial', sans-serif;
+    --heading-font-family: 'Segoe UI', sans-serif; /* More modern, elegant */
+    --base-font-size: 16px;
+    --line-height: 1.7;             /* Increased line height for readability */
+
+    /* --- Spacing --- */
+    --spacing-xs: 0.5rem;  /* 8px */
+    --spacing-sm: 1rem;    /* 16px */
+    --spacing-md: 1.5rem;  /* 24px */
+    --spacing-lg: 2.5rem;  /* 40px */
+    --spacing-xl: 4rem;    /* 64px */
+
+    /* --- Borders --- */
+    --border-width: 1px;
+    --border-radius: 8px;      /* Slightly rounded corners */
+    --border-color: #ddd;      /* Light gray border */
+
+    /* --- Effects --- */
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);  /* Subtle shadow */
+    --transition-duration: 0.3s;
+    --transition-easing: ease-in-out;
 }
 
-h1, h2, h3 {
-  color: #2c3e50;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--base-font-family);
+    font-size: var(--base-font-size);
+    line-height: var(--line-height);
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    scroll-behavior: smooth;  /* Smooth scrolling for anchor links */
+}
+
+/* ==========================================================================
+* 2. Typography
+* =========================================================================
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--heading-font-family);
+    font-weight: 700;  /* Use 700 for strong headings */
+    color: var(--text-color);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;      /* Adjust heading line height */
+}
+
+h1 {
+    font-size: 2.25rem; /* 36px */
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 1.75rem; /* 28px */
+    letter-spacing: -0.02em;
+}
+
+h3 {
+    font-size: 1.375rem; /* 22px */
+}
+
+h4 {
+    font-size: 1.125rem; /* 18px */
+}
+
+h5 {
+    font-size: 1rem;     /* 16px - same as base */
+    font-weight: 600;
+}
+
+h6 {
+    font-size: 0.875rem; /* 14px */
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-color);
 }
 
 a {
-  color: #007bff;
-  text-decoration: none;
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color var(--transition-duration) var(--transition-easing);
 }
 
-a:hover {
-  text-decoration: underline;
+a:hover,
+a:focus {
+    color: var(--accent-color-hover);
+    text-decoration: underline;
 }
 
-/* Navigation Bar */
-.navbar {
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* ==========================================================================
+* 3. Layout & Structure
+* =========================================================================
+*/
+.container {
+    max-width: 1200px;  /* Increased max-width for larger screens */
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
-.navbar-brand {
-  font-weight: bold;
-  color: #2c3e50;
+.section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--primary-color); /* Default section background */
 }
 
-.navbar-nav .nav-link {
-  color: #2c3e50;
+.section--secondary {
+    background-color: var(--secondary-color);  /* Alternate background */
 }
 
-.navbar-nav .nav-link:hover {
-  color: #007bff;
+.section__title {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
 }
 
-/* Main Content */
-main {
-  margin-top: 20px;
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
 }
+
+/* Responsive grid adjustments */
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr); /* Or 4, depending on content */
+    }
+}
+.full-width-section{
+  width: 100%;
+  padding: var(--spacing-xl) 0;
+  background-color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ==========================================================================
+* 4. Navigation
+* =========================================================================
+*/
 
 header {
-  margin-bottom: 40px;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    position: sticky; /* Fix header to top on scroll */
+    top: 0;
+    z-index: 100; /* Ensure header is above other elements */
 }
 
-header h1 {
-  font-size: 2.5rem;
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) 0;
+}
+
+.logo {
+    font-family: var(--heading-font-family);
+    font-size: 2rem;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin-left: var(--spacing-md);
+}
+
+.nav-link {
+    font-family: var(--heading-font-family); /* Use heading font for nav links */
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600; /* Medium font weight */
+    text-transform: uppercase;  /* Uppercase nav links */
+    letter-spacing: 0.05em;
+    padding: var(--spacing-xs) 0;
+    border-bottom: 2px solid transparent; /* For active state indication */
+    transition: color var(--transition-duration), border-bottom-color var(--transition-duration);
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color); /* Show active state with border */
+}
+
+/* Mobile menu (optional - add if needed) */
+/* ==========================================================================
+* 5. Main Content
+* =========================================================================
+*/
+
+.hero {
+    background-color: var(--secondary-color);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 3rem;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero__subtitle {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-lg);
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.service-card {
+    background-color: var(--white);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-duration) var(--transition-easing),
+                box-shadow var(--transition-duration) var(--transition-easing);
+}
+
+.service-card:hover,
+.service-card:focus {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.service-card__title {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--accent-color)
+}
+
+.service-card__description {
+    color: var(--text-light);
+}
+.gallery-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition:  var(--transition-duration) var(--transition-easing);
+}
+
+.gallery-card:hover, .gallery-card:focus{
+     transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform var(--transition-duration) ease;
+}
+.gallery-card img:hover{
+  transform: scale(1.05);
+}
+
+.gallery-card-title{
+  padding: var(--spacing-sm);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  text-align: center;
   font-weight: bold;
 }
 
-header p {
-  font-size: 1.2rem;
-  color: #555;
+/* ==========================================================================
+* 6. Footer
+* =========================================================================
+*/
+
+footer {
+    background-color: var(--secondary-color);
+    padding: var(--spacing-md) 0;
+    text-align: center;
+    color: var(--text-light);
+    border-top: 1px solid var(--border-color);
 }
 
-/* Sections */
-section {
-  margin-bottom: 40px;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+footer p{
+  margin-bottom: 0;
 }
 
-section h2 {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  border-bottom: 2px solid #007bff;
-  padding-bottom: 5px;
+/* ==========================================================================
+* 7. Forms
+* =========================================================================
+*/
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
-section ul {
-  list-style-type: disc;
-  margin-left: 20px;
+label {
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-color);
+    font-weight: 600;
 }
 
-section ul li {
-  margin-bottom: 10px;
+input,
+textarea,
+select {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-family: var(--base-font-family);
+    font-size: 1rem;
+    transition: border-color var(--transition-duration) var(--transition-easing);
 }
 
-/* Buttons */
-.btn-primary {
-  background-color: #007bff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(244, 143, 193, 0.2); /* Lighter shadow */
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+textarea {
+    resize: vertical;
+    min-height: 120px;
 }
 
-/* Footer */
-.footer {
-  background-color: #f8f9fa;
-  padding: 20px;
-  text-align: center;
-  margin-top: 40px;
-  font-size: 0.9rem;
-  color: #555;
+/* ==========================================================================
+* 8. Buttons
+* =========================================================================
+*/
+.button {
+    display: inline-block;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--accent-color);
+    color: var(--white);
+    font-family: var(--heading-font-family);
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-duration) var(--transition-easing),
+                transform var(--transition-duration) var(--transition-easing),
+                box-shadow var(--transition-duration) var(--transition-easing);
+    box-shadow: var(--box-shadow);
+    text-decoration: none;
+    text-align: center;
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--accent-color-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.button:disabled{
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.button--secondary {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.button--secondary:hover,
+.button--secondary:focus {
+    background-color: #d0d0d0;
+    color: var(--text-color);
+}
+
+/* ==========================================================================
+* 9. Images & Media
+* =========================================================================
+*/
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+.service-image{
+  height: 300px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: var(--border-radius);
+}
+
+/* ==========================================================================
+* 10. Animations & Transitions
+* =========================================================================
+*/
+/* (See individual elements for transitions) */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease;
+}
+
+/* ==========================================================================
+* 11. Responsive Design
+* =========================================================================
+*/
+
+@media (max-width: 768px) {  /* Medium screens and below (tablets) */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    .nav-list {
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-item {
+        margin-left: 0;
+        margin-bottom: var(--spacing-md);
+    }
+    .hero__title {
+        font-size: 2.5rem;  /* Adjust font size for smaller screens */
+    }
+    .hero__subtitle{
+      font-size: 1.2rem;
+    }
+    .grid {
+        grid-template-columns: 1fr;  /* Stack on small screens */
+    }
+    .section {
+        padding: var(--spacing-lg) 0; /* Adjust vertical padding */
+    }
+}
+
+@media (max-width: 480px) {  /* Small screens (phones) */
+    .hero__title {
+        font-size: 2rem;  /* Further adjust for very small screens */
+    }
+     .hero__subtitle{
+      font-size: 1rem;
+    }
+    .button {
+        width: 100%;
+        text-align: center;
+    }
+}
+/* ==========================================================================
+* 12. Print Styles (Optional)
+* =========================================================================
+*/
+@media print {
+  body {
+    font-size: 12pt;
+    color: #000;
+    background-color: #fff;
+  }
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+  header,
+  footer,
+  nav {
+    display: none;
+  }
+  h1 {
+    font-size: 20pt;
+  }
+  h2{
+     font-size: 18pt;
+  }
+  h3{
+    font-size: 16pt;
+  }
+  a {
+    color: #000 !important;
+    text-decoration: none;
+  }
+  .section {
+    padding: 10pt 0;
+  }
+  .grid {
+    display: block;
+  }
+  .service-card {
+    margin-bottom: 10pt;
+    border: 1px solid #ccc;
+    padding: 10pt;
+  }
+  .gallery-card{
+    margin-bottom: 10pt;
+     border: 1px solid #ccc;
+  }
+  .gallery-card img{
+    height: auto;
+  }
+}
+/* ==========================================================================
+* 13. Accessibility
+* ==========================================================================
+*/
+/* Ensure sufficient contrast for text */
+body {
+    color: var(--text-color);
+    background-color: var(--primary-color);
+}
+
+a:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
 }
